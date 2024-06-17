@@ -1,11 +1,11 @@
 package exercise05;
 
-public class CongNhan extends CanBo{
+public class CongNhan extends CanBo {
     private int bac;
 
-    public CongNhan(String hoTen, int tuoi, GioiTinh gioiTinh, String diaChi) {
+    public CongNhan(String hoTen, int tuoi, GioiTinh gioiTinh, String diaChi, int bac) {
         super(hoTen, tuoi, gioiTinh, diaChi);
-        this.bac=bac;
+        this.bac = bac;
     }
 
     @Override
