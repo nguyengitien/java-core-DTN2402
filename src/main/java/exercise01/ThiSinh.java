@@ -1,6 +1,6 @@
 package exercise01;
 
-public class ThiSinh {
+public abstract class ThiSinh {
     protected int soBaoDanh;
     protected String hoTen;
     protected String diaChi;
@@ -12,4 +12,6 @@ public class ThiSinh {
         this.diaChi = diaChi;
         this.mucUuTien = mucUuTien;
     }
+
+    public abstract String monThi();
 }
