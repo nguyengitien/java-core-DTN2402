@@ -7,6 +7,7 @@ import javax.management.relation.Role;
 
 @Getter
 @Setter
+
 public class User {
       private int id;
       private String fullName;
