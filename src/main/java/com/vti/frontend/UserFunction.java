@@ -1,25 +1,17 @@
 package com.vti.frontend;
 
+import com.vti.controller.UserController;
 import com.vti.entity.User;
-import com.vti.repository.UserRepository;
 import com.vti.util.ScannerUtil;
 import lombok.AllArgsConstructor;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
-//@AllArgsConstructor
-public class UserFuction {
-    private UserRepository repository;
+@AllArgsConstructor
+public class UserFunction {
+    private UserController controller;
 
-    public UserFuction(UserRepository repository) {
-        this.repository = repository;
-    }
-
-
-
-    public void showMenu() throws SQLException, IOException {
+    public void showMenu() {
         while (true){
             System.out.println("1. Dang nhap.");
             System.out.println("2. Hien thi danh sach user.");
@@ -42,7 +34,7 @@ public class UserFuction {
         }
     }
 
-    private void showAdminMenu() throws SQLException, IOException {
+    private void showAdminMenu() {
         while (true){
             System.out.println("1. Hien thi danh sach user.");
             System.out.println("2. Tim kiem user theo id: ");
@@ -68,7 +60,7 @@ public class UserFuction {
         }
     }
 
-    private void showEmployeeMenu() throws SQLException, IOException {
+    private void showEmployeeMenu() {
         while (true){
             System.out.println("1. Hien thi danh sach user.");
             System.out.println("2. Tim kiem user theo id: ");
@@ -89,9 +81,8 @@ public class UserFuction {
     }
 
 
-
-    public void findAll() throws SQLException, IOException {
-        List<User>  users = repository.findAll();
+    public void findAll() {
+        List<User>  users = controller.findAll();
         System.out.println("+------+-------------------------+-------------------------+");
         System.out.printf("| %-4s | %-23s | %-23s |%n", "ID", "FULL NAME", "EMAIL");
         System.out.println("+------+-------------------------+-------------------------+");
@@ -109,10 +100,10 @@ public class UserFuction {
         }
     }
 
-    private void findById() throws SQLException, IOException {
+    private void findById() {
         System.out.println("Nhap vao id: ");
         int id = ScannerUtil.inputInt();
-        User user = repository.findById(id);
+        User user = controller.findById(id);
         System.out.println("+------+-------------------------+-------------------------+");
         System.out.printf("| %-4s | %-23s | %-23s |%n", "ID", "FULL NAME", "EMAIL");
         System.out.println("+------+-------------------------+-------------------------+");
@@ -128,12 +119,12 @@ public class UserFuction {
         }
     }
 
-    private void findByEmailAndPassword() throws SQLException, IOException {
+    private void findByEmailAndPassword() {
         System.out.println("Nhap vao email: ");
         String email = ScannerUtil.inputEmail();
         System.out.println("Nhap vao password:" );
         String password = ScannerUtil.inputPassword();
-        User user = repository.findByEmailAndPassword(email, password);
+        User user = controller.findByEmailAndPassword(email, password);
         if(user == null){
             System.err.println("Dang nhap that bai.");
         }else {
@@ -147,20 +138,20 @@ public class UserFuction {
         }
     }
 
-    private void create() throws SQLException, IOException {
+    private void create() {
     System.out.println("Moi ban nhâp vào thông tin user.");
     System.out.println("Nhâp vào fulL name:");
     String fullName = ScannerUtil.inputFullName();
      System.out.println("Nhap vao email.");
     String email = ScannerUtil.inputEmail();
-    int result = repository.create(fullName, email);
+    int result = controller.create(fullName, email);
         System.out.printf("da tao thanh cong %d user.%n", result);
     }
 
-    private void deleteById() throws SQLException, IOException {
+    private void deleteById()  {
         System.out.println("Nhap vao id: ");
         int id = ScannerUtil.inputInt();
-        int result = repository.deleteById(id);
+        int result = controller.deleteById(id);
         System.out.printf("da xoa thanh cong %d user.%n", result);
     }
 }
