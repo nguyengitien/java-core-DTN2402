@@ -7,6 +7,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IUserRepository {
+
+    /**
+     * @pẩm id Định danh user
+    * @return Thông tin user theo id
+    * @throws SQLException nếu xảy ra lỗi về SQL
+     * @throws IOException Nếu xảy ra lỗi cấu hình
+    * */
+
     List<User> findAll() throws SQLException, IOException;
 
     User findById(int id) throws SQLException, IOException;
