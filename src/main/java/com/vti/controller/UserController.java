@@ -13,24 +13,16 @@ import java.util.List;
 public class UserController {
     private IUserService service;
 
-    public List<User> findAll() {
-       return service.findAll();
+    public List<User> findEmployeeAndManagerByProjectId(int projectId) {
+        return service.findEployeeAndManagerByProjectId(projectId);
     }
 
-    public User findById(int id) {
-       return service.findById(id);
-    }
-
-    public User findByEmailAndPassword(String email, String password) {
-       return service.findByEmailAndPassword(email,password);
+    public User findAdminByEmailAndPassword(String email, String password) {
+        return service.findAdminByEmailAndPassword(email, password);
     }
 
     public int create(String fullName, String email) {
-       return service.create(fullName,email);
-    }
-
-    public int deleteById(int id) {
-      return service.deleteById(id);
+        return service.create(fullName, email);
     }
 
 }
