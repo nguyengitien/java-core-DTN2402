@@ -18,7 +18,7 @@ public class UserService implements IUserService{
     public List<User> findEployeeAndManagerByProjectId(int projectId) {
         try{
              return repository.findEmployeeAndManagerByProjectId(projectId);
-        }catch(SQLException | IOException){
+        }catch(SQLException | IOException e){
             return null;
         }
     }
@@ -27,7 +27,7 @@ public class UserService implements IUserService{
     public User findAdminByEmailAndPassword(String email, String password) {
         try{
             return repository.findAdminByEmailAndPassword(email, password);
-        }catch(SQLException | IOException){
+        }catch(SQLException | IOException e){
             return null;
         }
     }
@@ -36,7 +36,7 @@ public class UserService implements IUserService{
     public int create(String fullName, String email) {
         try{
             return repository.create(fullName, email);
-        }catch(SQLException | IOException){
+        }catch(SQLException | IOException e){
             return 0;
         }
     }

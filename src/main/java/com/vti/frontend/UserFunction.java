@@ -19,7 +19,7 @@ public class UserFunction {
             System.out.println("Moi ban chon chuc nang");
             int menu = ScannerUtil.inputInt();
             if (menu == 1){
-                findByEmailAndPassword();
+                find();
             }else if(menu == 2){
                 findEmployeeAndManagerByProjectId();
             } else if (menu == 3) {
