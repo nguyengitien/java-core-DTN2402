@@ -23,6 +23,28 @@ public class UserFunction {
             }else if(menu == 2){
                 findEmployeeAndManagerByProjectId();
             } else if (menu == 3) {
+                System.out.println("Cam on ban da su dung chuong trinh");
+                return;
+            }  else {
+                System.err.println("Vui long nhap dung chuc nang");
+            }
+        }
+    }
+
+    public void showAdminMenu() {
+        while (true){
+
+            System.out.println("1. Tim kiem eployee va manager theo project_id.");
+            System.out.println("2. Them user.");
+            System.out.println("3. Dang xuat.");
+            System.out.println("Moi ban chon chuc nang");
+            int menu = ScannerUtil.inputInt();
+            if (menu == 1){
+                findEmployeeAndManagerByProjectId();
+            }else if(menu == 2){
+                create();
+            } else if (menu == 3) {
+                System.out.println("Dang xuat thanh cong.");
                 return;
             }  else {
                 System.err.println("Vui long nhap dung chuc nang");
@@ -63,8 +85,8 @@ public class UserFunction {
             System.err.println("Dang nhap that bai.");
         }else {
             User.Role role = user.getRole();
-            System.out.printf("Dang nhap thnah cong: %s - %s%n", user.getFullName(), role);
-
+            System.out.printf("Dang nhap thanh cong: %s - %s%n", user.getFullName(), role);
+            showAdminMenu();
         }
     }
 
