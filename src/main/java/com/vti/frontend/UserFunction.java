@@ -19,7 +19,7 @@ public class UserFunction {
             System.out.println("Moi ban chon chuc nang");
             int menu = ScannerUtil.inputInt();
             if (menu == 1){
-                find();
+                findAdminByEmailAndPassword();
             }else if(menu == 2){
                 findEmployeeAndManagerByProjectId();
             } else if (menu == 3) {
@@ -30,31 +30,6 @@ public class UserFunction {
         }
     }
 
-    private void showAdminMenu() {
-        while (true){
-            System.out.println("1. Hien thi danh sach user.");
-            System.out.println("2. Tim kiem user theo id: ");
-            System.out.println("3. Them user: ");
-            System.out.println("4. Xoa user theo id: ");
-            System.out.println("5. Dang xuat.");
-            System.out.println("Moi ban chon chuc nang");
-            int menu = ScannerUtil.inputInt();
-            if(menu == 1){
-                findAll();
-            } else if (menu == 2) {
-                findById();
-            } else if (menu == 3) {
-                create();
-            } else if (menu == 4) {
-                deleteById();
-            } else if(menu == 5){
-                System.out.println("Dang xuat thanh cong");
-                return;
-            }else {
-                System.err.println("Vui long nhap dung chuc nang");
-            }
-        }
-    }
 
     private void findEmployeeAndManagerByProjectId() {
         System.out.println("Nhập vào project id:");
@@ -78,22 +53,18 @@ public class UserFunction {
     }
 
 
-    private void () {
+    private void findAdminByEmailAndPassword() {
         System.out.println("Nhap vao email: ");
         String email = ScannerUtil.inputEmail();
         System.out.println("Nhap vao password:" );
         String password = ScannerUtil.inputPassword();
-        User user = controller.findByEmailAndPassword(email, password);
+        User user = controller.findAdminByEmailAndPassword(email, password);
         if(user == null){
             System.err.println("Dang nhap that bai.");
         }else {
             User.Role role = user.getRole();
             System.out.printf("Dang nhap thnah cong: %s - %s%n", user.getFullName(), role);
-            if(role == User.Role.ADMIN){
-                showAdminMenu();
-            } else if (role == User.Role.EMPLOYEE) {
-                showEmployeeMenu();
-            }
+
         }
     }
 
