@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class jdbcUtil {
+
     public static Connection getConnection() throws SQLException, IOException {
         String path = "src/main/resources/database.properties";
         try(FileInputStream  fis = new FileInputStream(path)) {
@@ -19,12 +20,6 @@ public class jdbcUtil {
             String password = properties.getProperty("password");
             return DriverManager.getConnection(url, user, password);
         }
-
-
-//        String url = "jdbc:mysql://localhost:3306/lesson_10";
-//        String user = "root";
-//        String password = "root";
-//        return DriverManager.getConnection(url, user, password);
 
     }
 

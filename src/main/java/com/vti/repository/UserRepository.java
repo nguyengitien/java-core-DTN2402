@@ -17,7 +17,6 @@ public class UserRepository implements IUserRepository {
         try (
                 Connection connection = jdbcUtil.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql);
-
         ) {
             stmt.setInt(1, projectId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -60,7 +59,6 @@ public class UserRepository implements IUserRepository {
             return pStmt.executeUpdate();
         }
     }
-
 
 
     private User getUser(ResultSet rs) throws SQLException {
